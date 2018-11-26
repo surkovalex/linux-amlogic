@@ -7,14 +7,8 @@
 ## Do not change.
 ##########################################
 
-ifndef CONFIG_KASAN
 KBUILD_CFLAGS += -Wlarger-than=28792
-KBUILD_CFLAGS += -Wstack-usage=1856
-else
-ifeq ($(call cc-ifversion, -lt, 0500, y), y)
-    $(error -----GCC VERSION TOO SMALL FOR KASAN -----)
-endif
-endif
+KBUILD_CFLAGS += -Wstack-usage=1856 -Wno-bool-operation -Wno-maybe-uninitialized
 
 # These 2 marked sentence is just for generate warning messages
 #KBUILD_CFLAGS += -Wno-error=larger-than=28792
@@ -135,3 +129,5 @@ obj-$(CONFIG_AMLOGIC_DEFENDKEY) += defendkey/
 obj-$(CONFIG_MTD_SPI_NOR) += spi-nor/
 
 obj-$(CONFIG_DOLBY_FW) += dolby_fw/
+
+obj-y	+= media_modules/

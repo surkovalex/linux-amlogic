@@ -138,5 +138,6 @@ source "drivers/amlogic/spi-nor/Kconfig"
 
 source "drivers/amlogic/dolby_fw/Kconfig"
 
+source "drivers/amlogic/media_modules/Kconfig"
 endmenu
 endif
